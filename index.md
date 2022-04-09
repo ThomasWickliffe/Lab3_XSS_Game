@@ -28,6 +28,42 @@
 >
 >// Insert image file
 
-##Level 3
->The goal for this level is to inject a script to prompt an alert in the app. There is no user input this level so we 
->must manipulate the URL in order to inject the JavaScript
+## Level 3
+>The goal for this level is to inject a script to prompt an alert in the app. There is no user text input
+>this level so we must manipulate the URL in order to inject the JavaScript alert. As noted in the Hint
+>section, we need to check out the code section where the script handles user input. We can see that the
+>`window.onload object` gets a URL fragment and used the `choosetab function` to append the fragment to
+>the image tag, and load the new tag into the page; as shown below.
+> ```bash
+> window.onload = function() {
+> chooseTab(unescape(self.location.hash.substr(1)) || "1");
+> }
+> ```
+
+> ```bash
+> function chooseTab(num) {
+> // Dynamically load the appropriate image.
+> var html = "Image " + parseInt(num) + "<br>";
+> html += "<img src='/static/level3/cloud" + num + ".jpg' />";
+> $('#tabContent').html(html);
+> ```
+
+>In order to manipulate the URL we need to do something similar to the previous level where we use the img tag's
+>`src` attribute to trigger an `onerror`attribute which will prompt our JavaScript alert. We execute the
+>manipulation by closing off the `src` attribute with a single quote and finish off the code by adding a `;//` to
+>close the `img` tag and comment out the rest. Click on a different image tab and then append the following code to
+>the end of the URL where you see a `#2` for example. 
+
+> ```bash
+>  ' onerror='alert("Hello");//
+> ```
+
+> The URL should read as such
+> ```bash
+> https://xss-game.appspot.com/level3/frame#2 ' onerror='alert("Hello");//
+> ```
+
+## Level 4
+
+
+
