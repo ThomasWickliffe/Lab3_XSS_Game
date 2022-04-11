@@ -1,37 +1,88 @@
-## Welcome to GitHub Pages
+# XSS Game Lab 3
 
-You can use the [editor on GitHub](https://github.com/ThomasWickliffe/Lab3_XSS_Game/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+## Level 1 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+>The goal here is tp inject a script into the search box of the provided frame that prompts an alert onto the webpage. 
+>The script used here is: 
+> - `<script>alert("Hello")</script>`
+>
+> Which creates the following alert...
 
-### Markdown
+![Level 1 image](Lab3_XSS_Game/Lab3Photos/L3_Level.png)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+>The reason this works is because the webpage script is not configured to properly sanitize the user input; which then causes the input to be read as script, and executed it.
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
+## Level 2
 
-1. Numbered
-2. List
+>The goal here is to again inject an alert into the window. This time the `<script>` tag does not work, 
+>but if we create a post using the `<h1>` html tag you
+>notice that we can post a message that displays with the Heading 1 format. This tells us that the posted message 
+>can still pass the html even though the `<script>` tag does not work. Upon inspection of the code you can see 
+>that html is also being passed thought the welcome message as well. Following the hints provided you find that you can 
+>use the `img` tag to run through a URL that does not work and creates an error which allows you to insert an `alert()`
+>
+> - `<img src="" onerror=alert("Hello")>`
+>
+>Which creates the following alert...
+>
+![Level 2 image](Lab3_XSS_Game/Lab3Photos/L3_Leve2.png)
 
-**Bold** and _Italic_ and `Code` text
+## Level 3
+>The goal for this level is to inject a script to prompt an alert in the app. There is no user text input
+>this level so we must manipulate the URL in order to inject the JavaScript alert. As noted in the Hint
+>section, we need to check out the code section where the script handles user input. We can see that the
+>`window.onload object` gets a URL fragment and used the `choosetab function` to append the fragment to
+>the image tag, and load the new tag into the page; as shown below.
+> ```bash
+> window.onload = function() {
+> chooseTab(unescape(self.location.hash.substr(1)) || "1");
+> }
+> ```
 
-[Link](url) and ![Image](src)
-```
+> ```bash
+> function chooseTab(num) {
+> // Dynamically load the appropriate image.
+> var html = "Image " + parseInt(num) + "<br>";
+> html += "<img src='/static/level3/cloud" + num + ".jpg' />";
+> $('#tabContent').html(html);
+> ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+>In order to manipulate the URL we need to do something similar to the previous level where we use the img tag's
+>`src` attribute to trigger an `onerror`attribute which will prompt our JavaScript alert. We execute the
+>manipulation by closing off the `src` attribute with a single quote and finish off the code by adding a `;//` to
+>close the `img` tag and comment out the rest. Click on a different image tab and then append the following code to
+>the end of the URL where you see a `#2` for example. 
 
-### Jekyll Themes
+> ```bash
+>  ' onerror='alert("Hello");//
+> ```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ThomasWickliffe/Lab3_XSS_Game/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+> The URL should read as such
+> ```bash
+> https://xss-game.appspot.com/level3/frame#2 ' onerror='alert("Hello");//
+> ```
+![Level 3 image](Lab3_XSS_Game/Lab3Photos/L3_Leve3.png)
 
-### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## Level 4
+
+>In this level we will again attempt to pass a JavaScript alert() into the window by using the
+>user supplied data to manipulate any vulerabilities that does not properly escape the function.
+>Upon inspection of the code we can see that the `index page` passes a user supplied number into
+>the timer function of the  `timer.html` page. The html page is designed to implemnt a timer
+>based on the number supplied. The webpage then executed the timer, prompts you when its done
+>and finally take you back to the home page.
+
+>You can see in the `timer.html` page that the given number is also posted through another `img`
+>tag. We can again exploit the `img` tag by adding a single quote after the given number to
+>close off the onload attribute and input an alert as shown below.
+
+> ```bash
+>   `**alert("Hello");//
+> ```
+
+![Level 4 image](Lab3_XSS_Game/Lab3Photos/L3_Leve4.png)
+
+
