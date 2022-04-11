@@ -8,7 +8,9 @@
 >
 > Which creates the following alert...
 
+
 ![Level 1 image](/docs/Lab3Photos/L3_Level1.png)
+
 
 
 >The reason this works is because the webpage script is not configured to properly sanitize the user input; which then causes the input to be read as script, and executed it.
@@ -63,7 +65,10 @@
 > ```bash
 > https://xss-game.appspot.com/level3/frame#2 ' onerror='alert("Hello");//
 > ```
+
+
 ![Level 3 image](/docs/Lab3Photos/L3_Level3.png)
+
 
 
 ## Level 4
@@ -82,6 +87,8 @@
 > ```bash
 >   `**alert("Hello");//
 > ```
+
+
 
 ![Level 4 image](/docs/Lab3Photos/L3_Level4.png)
 
