@@ -8,7 +8,7 @@
 >
 > Which creates the following alert...
 
-![Level 1 image](/docs/Lab3Photos/L3_Level.png)
+![Level 1 image](/docs/Lab3Photos/L3_Level1.png)
 
 
 >The reason this works is because the webpage script is not configured to properly sanitize the user input; which then causes the input to be read as script, and executed it.
@@ -27,7 +27,7 @@
 >
 >Which creates the following alert...
 >
-![Level 2 image](/docs/Lab3Photos/L3_Leve2.png)
+![Level 2 image](/docs/Lab3Photos/L3_Level2.png)
 
 ## Level 3
 >The goal for this level is to inject a script to prompt an alert in the app. There is no user text input
