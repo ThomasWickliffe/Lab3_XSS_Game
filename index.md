@@ -65,5 +65,25 @@
 
 ## Level 4
 
+>In this level we will again attempt to pass a JavaScript alert() into the window by using the
+>user supplied data to manipulate any vulerabilities that does not properly escape the function.
+>Upon inspection of the code we can see that the `index page` passes a user supplied number into
+>the timer function of the  `timer.html` page. The html page is designed to implemnt a timer
+>based on the number supplied. The webpage then executed the timer, prompts you when its done
+>and finally take you back to the home page.
+
+>You can see in the `timer.html` page that the given number is also posted through another `img`
+>tag. We can again exploit the `img` tag by adding a single quote after the given number to
+>close off the onload attribute and input an alert as shown below.
+
+> ```bash
+>   `**alert("Hello");//
+> ```
+
+//insert image
+
+## Level 5
+
+
 
 
