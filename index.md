@@ -27,7 +27,7 @@
 >
 >Which creates the following alert...
 >
->// Insert image file
+![Level 2 image](Lab3_XSS_Game/Lab3Photos/L3_Leve2.png)
 
 ## Level 3
 >The goal for this level is to inject a script to prompt an alert in the app. There is no user text input
@@ -63,6 +63,8 @@
 > ```bash
 > https://xss-game.appspot.com/level3/frame#2 ' onerror='alert("Hello");//
 > ```
+![Level 3 image](Lab3_XSS_Game/Lab3Photos/L3_Leve3.png)
+
 
 ## Level 4
 
@@ -81,9 +83,7 @@
 >   `**alert("Hello");//
 > ```
 
-//insert image
-
-## Level 5
+![Level 4 image](Lab3_XSS_Game/Lab3Photos/L3_Leve4.png)
 
 
 
