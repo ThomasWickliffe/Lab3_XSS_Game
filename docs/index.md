@@ -8,7 +8,7 @@
 >
 > Which creates the following alert...
 
-![Level 1 image](Lab3_XSS_Game/Lab3Photos/L3_Level.png)
+![Level 1 image](Lab3_XSS_Game/docs/Lab3Photos/L3_Level.png)
 
 
 >The reason this works is because the webpage script is not configured to properly sanitize the user input; which then causes the input to be read as script, and executed it.
@@ -27,7 +27,7 @@
 >
 >Which creates the following alert...
 >
-![Level 2 image](Lab3_XSS_Game/Lab3Photos/L3_Leve2.png)
+![Level 2 image](Lab3_XSS_Game/docs/Lab3Photos/L3_Leve2.png)
 
 ## Level 3
 >The goal for this level is to inject a script to prompt an alert in the app. There is no user text input
@@ -63,7 +63,7 @@
 > ```bash
 > https://xss-game.appspot.com/level3/frame#2 ' onerror='alert("Hello");//
 > ```
-![Level 3 image](Lab3_XSS_Game/Lab3Photos/L3_Leve3.png)
+![Level 3 image](Lab3_XSS_Game/docs/Lab3Photos/L3_Leve3.png)
 
 
 ## Level 4
@@ -83,6 +83,6 @@
 >   `**alert("Hello");//
 > ```
 
-![Level 4 image](Lab3_XSS_Game/Lab3Photos/L3_Leve4.png)
+![Level 4 image](Lab3_XSS_Game/docs/Lab3Photos/L3_Leve4.png)
 
 
