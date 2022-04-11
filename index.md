@@ -8,7 +8,7 @@
 >
 > Which creates the following alert...
 >
-![Level 1 image](/Docs/assets/images/Access the conf file.png)
+![Level 1 image](Lab3_XSS_Game/Lab3Photos/L3_Level.png)
 
 
 >The reason this works is because the webpage script is not configured to properly sanitize the user input; which then causes the input to be read as script, and executed it.
