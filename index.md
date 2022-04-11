@@ -7,7 +7,7 @@
 > - `<script>alert("Hello")</script>`
 >
 > Which creates the following alert...
->
+
 ![Level 1 image](Lab3_XSS_Game/Lab3Photos/L3_Level.png)
 
 
